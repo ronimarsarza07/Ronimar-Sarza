@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS finals_crud_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE finals_crud_db;
+CREATE TABLE IF NOT EXISTS candidates (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    position VARCHAR(80) NOT NULL,
+    party VARCHAR(100) NULL,
+    platform VARCHAR(1000) NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    INDEX idx_candidates_active (deleted_at),
+    INDEX idx_candidates_name (name)
+) ENGINE=InnoDB;
